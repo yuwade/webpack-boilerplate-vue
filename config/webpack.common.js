@@ -6,8 +6,10 @@ const paths = require('./paths')
 
 module.exports = {
   // Where webpack looks to start building the bundle
-  entry: [paths.src + '/index.js'],
-
+  entry: {
+    index: paths.src + '/index.js',
+    template_vue: paths.src + '/template-vue.js',
+  },
   // Where webpack outputs the assets and bundles
   output: {
     path: paths.build,
@@ -37,10 +39,19 @@ module.exports = {
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     new HtmlWebpackPlugin({
+      chunks: ['index'],
       title: 'webpack Boilerplate',
       favicon: paths.src + '/images/favicon.png',
       template: paths.src + '/template.html', // template file
       filename: 'index.html', // output file
+      inject: "body",
+    }),
+    new HtmlWebpackPlugin({
+      chunks: ['template_vue'],
+      title: 'webpack Boilerplate vue',
+      favicon: paths.src + '/images/favicon.png',
+      template: paths.src + '/template-vue.html', // template file
+      filename: 'index-vue.html', // output file
     }),
   ],
 

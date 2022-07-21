@@ -42,6 +42,9 @@ cd dist && http-server
 
 ## Features
 
+## add vue template 
+
+
 - [webpack](https://webpack.js.org/)
 - [Babel](https://babeljs.io/)
 - [Sass](https://sass-lang.com/)
